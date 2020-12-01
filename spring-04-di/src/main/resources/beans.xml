@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="address" class="com.oay.pojo.Address">
+        <property name="address" value="杭州" />
+    </bean>
+    <!-- 八种set注入方式 -->
+    <bean id="student" class="com.oay.pojo.Student">
+        <!--第一种注入方法，普通值注入，value -->
+        <property name="name" value="value使用基本数据类型"/>
+        <!--第二种注入方法，bean注入，ref -->
+        <property name="address" ref="address"/>
+        <!--第三种注入方法，数组注入,array -->
+        <property name="books">
+            <array>
+                <value>唐僧</value>
+                <value>孙悟空</value>
+                <value>猪八戒</value>
+                <value>沙悟净</value>
+                <value>白龙马</value>
+            </array>
+        </property>
+
+        <!--第四种注入方法，集合注入,list -->
+        <property name="hobbys">
+            <list>
+                <value>师傅</value>
+                <value>大师兄</value>
+                <value>二师兄</value>
+                <value>三师兄</value>
+                <value>小师弟</value>
+            </list>
+        </property>
+        <!--第五种注入方法，map -->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="1234567895555"/>
+                <entry key="姓名" value="测试"/>
+            </map>
+        </property>
+        <!--第六种注入方法，Set -->
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>DNF</value>
+            </set>
+        </property>
+        <!--第七种注入方法，null -->
+        <property name="wife">
+            <null/>
+        </property>
+        <!--第八种注入方法，Properties-->
+        <property name="info">
+            <props>
+                <prop key="学号">001</prop>
+                <prop key="姓名">小吴</prop>
+                <prop key="性别">男</prop>
+                <prop key="班级">1001班</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--开启bean自动装配 注解方式-->
+    <context:annotation-config/>
+
+    <!--注册bean-->
+    <bean id="userService" class="com.oay.service.UserServiceImpl"/>
+    <bean id="log" class="com.oay.log.Log"/>
+    <bean id="afterLog" class="com.oay.log.AfterLog"/>
+
+    <!--
+        aop的配置：第一种实现方式 Spring的API接口实现
+    -->
+    <!--<aop:config>
+        &lt;!&ndash;切入点 expression:表达式匹配要执行的方法&ndash;&gt;
+        <aop:pointcut id="pointcut" expression="execution(* com.oay.service.UserServiceImpl.*(..))"/>
+        &lt;!&ndash;执行环绕; advice-ref执行方法 . pointcut-ref切入点&ndash;&gt;
+        <aop:advisor advice-ref="log" pointcut-ref="pointcut"/>
+        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"/>
+    </aop:config>-->
+
+    <!--
+        aop的配置：第二种实现方式 自定义接口实现
+    -->
+    <!--<bean id="diy" class="com.oay.diy.Pointcut"/>
+    &lt;!&ndash;aop的配置&ndash;&gt;
+    <aop:config>
+        &lt;!&ndash;使用AOP的标签实现&ndash;&gt;
+        <aop:aspect ref="diy">
+            <aop:pointcut id="pointcut" expression="execution(* com.oay.service.*.*(..))"/>
+            <aop:before method="before" pointcut-ref="pointcut"/>
+            <aop:after method="after" pointcut-ref="pointcut"/>
+        </aop:aspect>
+    </aop:config>
+    -->
+
+    <!--
+        aop的配置：第三种实现方式 通过注解实现
+    -->
+    <bean id="annotationPointcut" class="com.oay.diy.AnnotationPointcut"/>
+    <!--开启aop注解 ，上面一定要引入头文件 -->
+    <aop:aspectj-autoproxy />
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userDaoImpl" class="com.oay.dao.UserDaoImpl" />
+    <bean id="userMysqlDaoImpl" class="com.oay.dao.UserMysqlDaoImpl" />
+
+    <bean id="userServiceImpl" class="com.oay.service.UserServiceImpl">
+        <!--
+            name : 注入对象 ，相当于new
+            ref：spring bean管理对象
+        -->
+        <property name="userDao" ref="userMysqlDaoImpl" />
+    </bean>
+
+</beans>

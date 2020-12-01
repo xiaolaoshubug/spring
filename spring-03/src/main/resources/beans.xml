@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--默认使用无参注入-->
+    <!--<bean id="user" class="com.oay.pojo.User">
+        <property name="name" value="学习spring"/>
+    </bean>-->
+
+    <!--
+
+    1、使用有参注入
+    2、id对象名
+    3、class全限名
+    4、name，对象名别名，可以取多个别名 user3 user4,user5;user6
+    5、alias 没啥用
+    -->
+    <bean id="user" class="com.oay.pojo.User" name="user3">
+        <constructor-arg index="0" value="学习spring,有参构造。。。"/>
+    </bean>
+
+    <!-- bean对象别名，可以使用bean对象名也可以是别名 -->
+    <alias name="user" alias="user2" />
+
+</beans>
