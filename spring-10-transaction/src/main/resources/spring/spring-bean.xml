@@ -12,8 +12,6 @@
 
     <!--自动装配-->
     <context:annotation-config/>
-    <!--Spring aop-->
-    <aop:aspectj-autoproxy/>
 
     <bean id="userServiceImpl" class="com.oay.mapper.UserServiceImpl">
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>

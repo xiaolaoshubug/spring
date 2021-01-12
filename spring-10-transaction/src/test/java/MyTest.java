@@ -21,9 +21,8 @@ public class MyTest {
     public void test() {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserMapper userMapper = context.getBean("userServiceImpl", UserMapper.class);
-        List<User> users = userMapper.queryUserAll();
-        for (User user : users) {
-            System.out.println(user);
-        }
+        userMapper.deleteUser(3);
+        User userAdd = new User(3, "Ð¡Ììtx", "123456");
+        userMapper.addUser(userAdd);
     }
 }

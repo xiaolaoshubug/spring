@@ -65,6 +65,7 @@
     </tx:advice>
     <!--aop 切入 Spring事务 -->
     <aop:config>
+        <!--com.oay.mapper这个包下面的所有数据库操作出现失败，事务都会进行回滚-->
         <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.oay.mapper.*.*(..))"/>
     </aop:config>
 

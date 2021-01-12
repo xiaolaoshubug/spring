@@ -8,3 +8,5 @@
 /spring-10-transaction/target/
 /spring-hello/target/
 /spring-ioc/target/
+/.gitignore
+/.idea/

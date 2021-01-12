@@ -126,7 +126,7 @@
             <context:annotation-config/>
 ```
 
-## @Autowired（自动注入）
+## @Component（自动注入）
 
 ```
 @Component（自动装配）
